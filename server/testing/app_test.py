@@ -46,6 +46,13 @@ class TestApp:
                 'password': 'pikachu',
             })
 
+            print(f"\n--- DEBUGGING LOGIN RESPONSE ---")
+            print(f"Status Code: {response.status_code}")
+            print(f"Headers: {response.headers}")
+            print(f"Raw Data: {response.data.decode('utf-8')}") # Decode bytes to string for readability
+            print(f"get_json() result: {response.get_json()}")
+            print(f"--------------------------------")
+
             assert(response.get_json()['username'] == 'ash')
 
             with client.session_transaction() as session:
